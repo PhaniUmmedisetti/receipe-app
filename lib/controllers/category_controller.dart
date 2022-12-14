@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:meals/models/category.dart';
-import 'package:meals/models/meal.dart';
-import 'package:meals/models/meal_single.dart';
-import 'package:meals/views/meal_screen.dart';
 
-import '../api/dio_helpers.dart';
-import '../views/Single_meal_screen.dart';
+import '../api/network_service.dart';
+import '../models/category.dart';
+import '../models/meal.dart';
+import '../models/meal_single.dart';
+import '../views/SIngle_meal_screen.dart';
+import '../views/meal_screen.dart';
 
 class CategoryController extends GetxController {
   @override
   void onInit() async {
-    print("init");
+    print("onInit state is initiated");
     await categoriesGetAll();
     super.onInit();
   }
 
-  DioHelpers api = Get.put(DioHelpers());
+  NetworkService api = Get.put(NetworkService());
 
   List<Category> listOfCategories = [];
   List<Meal> listOfMeals = [];
-  List<MealSingle> listOfSingleMealItems = [];
+  // List<MealSingle> listOfSingleMealItems = [];
+
+  // To get all the available categories
 
   Future categoriesGetAll() async {
     final res = await api.categoriesGetAll();
@@ -38,6 +40,7 @@ class CategoryController extends GetxController {
     update();
   }
 
+// To get categories by their name
   Future getCategoryByName(String strCategory) async {
     final res = await api.categoryGetByName(strCategory: strCategory);
 
@@ -46,7 +49,6 @@ class CategoryController extends GetxController {
         child: Text(''),
       ));
       Get.back();
-      return false;
     }
     for (var i in res.data['meals']) {
       listOfMeals.add(Meal.fromJson(i));
@@ -55,8 +57,25 @@ class CategoryController extends GetxController {
     update();
   }
 
+  // To get a category by its id
+  MealSingle? singleRes;
+
   Future<void> getCategoryByid(String idMeal) async {
     final res = await api.categoryGetByid(idMeal: idMeal);
+
+    print(res);
+    singleRes = res;
+    print(singleRes);
+
+    update();
+  }
+
+  goToSingleScreen(String id) {
+    Get.to(SingleMealScreen(), arguments: {
+      "idMeal": id,
+    });
+  }
+}
 
     // if (res.data == null || res as String) {
     //   await Get.dialog(const Dialog(
@@ -69,6 +88,3 @@ class CategoryController extends GetxController {
     // }
     // print("Single meal item");
     // Get.to(SingleScreen());
-    update();
-  }
-}

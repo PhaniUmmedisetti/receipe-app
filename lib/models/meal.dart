@@ -1,3 +1,5 @@
+
+// Model for All the meal items
 class Meal {
   String strMeal;
   String strMealThumb;

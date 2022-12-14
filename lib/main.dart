@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:meals/views/home_screen.dart.dart';
+
+import 'views/home_screen.dart.dart';
 
 void main() {
   runApp(const MyApp());

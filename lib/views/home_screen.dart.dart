@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:meals/views/meal_screen.dart';
 
 import '../controllers/category_controller.dart';
 

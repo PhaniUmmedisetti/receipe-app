@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:meals/controllers/category_controller.dart';
 
+import '../controllers/category_controller.dart';
 import '../widgets/main_item_card.dart';
 
 class MealScreen extends StatelessWidget {

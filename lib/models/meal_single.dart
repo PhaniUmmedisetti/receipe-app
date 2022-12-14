@@ -1,3 +1,5 @@
+// Model for single meal item
+
 class MealSingle {
   String idMeal;
   String strMeal;
