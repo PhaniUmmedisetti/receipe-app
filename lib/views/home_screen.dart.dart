@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:meals/widgets/body_loader.dart';
 
 import '../controllers/category_controller.dart';
 
@@ -15,43 +16,48 @@ class HomeScreen extends StatelessWidget {
             title: const Text('Home'),
             centerTitle: true,
           ),
-          body: Padding(
-            padding: const EdgeInsets.all(11.0),
-            // implement GridView.builder
-            child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 200,
-                  childAspectRatio: 3 / 2,
-                  crossAxisSpacing: 20,
-                  mainAxisSpacing: 20,
-                ),
-                itemCount: categoryController.listOfCategories.length,
-                itemBuilder: (BuildContext ctx, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      categoryController.listOfMeals.clear();
-                      categoryController.getCategoryByName(categoryController
-                          .listOfCategories[index].strCategory);
-                    },
-                    child: Column(children: [
-                      CircleAvatar(
-                        radius: 50,
-                        backgroundImage: NetworkImage(
-                          categoryController
-                              .listOfCategories[index].strCategoryThumb,
-                        ),
+          body: categoryController.isMainScreenLoading
+              ? const BodyLoader()
+              : Padding(
+                  padding: const EdgeInsets.all(11.0),
+                  // implement GridView.builder
+                  child: GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: 200,
+                        childAspectRatio: 3 / 2,
+                        crossAxisSpacing: 20,
+                        mainAxisSpacing: 20,
                       ),
-                      Text(
-                        categoryController.listOfCategories[index].strCategory,
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      )
-                    ]),
-                  );
-                }),
-          ),
+                      itemCount: categoryController.listOfCategories.length,
+                      itemBuilder: (BuildContext ctx, index) {
+                        return GestureDetector(
+                          onTap: () {
+                            categoryController.listOfMeals.clear();
+                            categoryController.getCategoryByName(
+                                categoryController
+                                    .listOfCategories[index].strCategory);
+                          },
+                          child: Column(children: [
+                            CircleAvatar(
+                              radius: 50,
+                              backgroundImage: NetworkImage(
+                                categoryController
+                                    .listOfCategories[index].strCategoryThumb,
+                              ),
+                            ),
+                            Text(
+                              categoryController
+                                  .listOfCategories[index].strCategory,
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
+                          ]),
+                        );
+                      }),
+                ),
         );
       },
     );

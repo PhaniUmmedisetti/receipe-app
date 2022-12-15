@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart' as g;
-import 'package:meals/models/meal_single.dart';
+import 'package:meals/models/single_meal.dart';
 
 import '../constants.dart';
 
@@ -40,6 +40,7 @@ class NetworkService extends g.GetxController {
 
   // To fetch categories by their name
   Future categoryGetByName({required String strCategory}) async {
+
     try {
       final res = await dio.get(
         ApiEndPoints.baseUrlFilter + strCategory,
@@ -59,13 +60,16 @@ class NetworkService extends g.GetxController {
     }
   }
 
-  Future<MealSingle?> categoryGetByid({required String idMeal}) async {
+  Future<SingleMeal?> categoryGetByid({required String idMeal}) async {
+    print(" id meal here : $idMeal");
     try {
       final res = await dio.get(
-        'https://themealdb.com/api/json/v1/1/filter.php?c=$idMeal',
+        'https://themealdb.com/api/json/v1/1/lookup.php?i=$idMeal',
       );
+      print(res);
+      print(res.statusCode);
       if (res.statusCode == 200) {
-        return MealSingle.fromJson(res.data['meals'][0]);
+        return SingleMeal.fromJson(res.data['meals'][0]);
       }
       return null;
     } catch (err) {

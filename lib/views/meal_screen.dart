@@ -14,15 +14,32 @@ class MealScreen extends StatelessWidget {
       return Scaffold(
           appBar: AppBar(
             title: const Text('Meal Screen'),
+            // actions: <Widget>[
+            //   IconButton(
+            //     icon: const Icon(
+            //       Icons.favorite_border_outlined,
+            //       color: Colors.white,
+            //     ),
+            //     onPressed: () {},
+            //   ),
+            // ],
           ),
-          body: SingleChildScrollView(
+          body:
+              // controller.isDataLoading
+              // Container(),
+              //     :
+              SingleChildScrollView(
             child: Column(
               children: [
                 ...categoryController.listOfMeals.map((e) => MainScreenItemCard(
                       arrowIcon: Icons.arrow_right,
                       image: e.strMealThumb,
                       title: e.strMeal,
-                      onTap: () => categoryController.getCategoryByid,
+                      onTap: () {
+                        categoryController.goToSingleScreen(e.idMeal);
+                      },
+                      favIcon: Icons.favorite_border_outlined,
+                      // favIcon: Icons.favorite,
                     )),
               ],
             ),

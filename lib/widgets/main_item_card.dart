@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 
+
 class MainScreenItemCard extends StatelessWidget {
   final String image;
   final String title;
   final IconData arrowIcon;
-  final Function? onTap;
+  final IconData favIcon;
+  final Function onTap;
 
-  const MainScreenItemCard(
-      {super.key,
-      required this.image,
-      required this.title,
-      required this.arrowIcon,
-      required this.onTap});
+  const MainScreenItemCard({
+    super.key,
+    required this.image,
+    required this.title,
+    required this.arrowIcon,
+    required this.onTap,
+    required this.favIcon,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +33,10 @@ class MainScreenItemCard extends StatelessWidget {
         // color: ColorConstants.blue,
         child: Center(
           child: ListTile(
-            contentPadding: const EdgeInsets.all(1),
+            contentPadding: const EdgeInsets.only(
+              right: 11,
+              left: 11,
+            ),
             title: Padding(
               padding: const EdgeInsets.only(
                 bottom: 6,
@@ -46,8 +53,14 @@ class MainScreenItemCard extends StatelessWidget {
               backgroundImage: NetworkImage(image, scale: 1.0),
               radius: 30,
             ),
-            trailing: Icon(arrowIcon),
-            onTap: () => onTap,
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(favIcon),
+                Icon(arrowIcon),
+              ],
+            ),
+            onTap: () => onTap(),
           ),
         ),
       ),
