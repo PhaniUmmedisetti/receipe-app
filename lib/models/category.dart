@@ -1,3 +1,5 @@
+
+// Category model for "Home screen" list items
 class Category {
   String idCategory;
   String strCategory;

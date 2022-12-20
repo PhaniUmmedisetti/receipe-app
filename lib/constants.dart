@@ -1,3 +1,5 @@
+
+// API end points for meals data
 class ApiEndPoints {
   // Base urls of api
   static const baseUrl = "https://themealdb.com/api/json/v1/1";
@@ -9,7 +11,7 @@ class ApiEndPoints {
   static const category = "/categories.php";
   static const getAllCategoriesEndPoint = baseUrl + category;
 
-  //
+  
 }
 
 //'https://themealdb.com/api/json/v1/1/categories.php'

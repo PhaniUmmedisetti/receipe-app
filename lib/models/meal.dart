@@ -1,5 +1,5 @@
 
-// Model for All the meal items
+// Model for All the meal items in "Meal Screen"
 class Meal {
   String strMeal;
   String strMealThumb;

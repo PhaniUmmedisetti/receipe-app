@@ -4,6 +4,7 @@ import 'package:meals/models/single_meal.dart';
 
 import '../constants.dart';
 
+// HTTP service for api calls
 class NetworkService extends g.GetxController {
   late Dio dio;
 

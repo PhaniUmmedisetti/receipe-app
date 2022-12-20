@@ -1,4 +1,4 @@
-// Model for single meal item
+// Model for single meal item in "Single meal screen"
 
 class SingleMeal {
   String? idMeal;

@@ -8,6 +8,8 @@ import '../models/single_meal.dart';
 import '../views/SIngle_meal_screen.dart';
 import '../views/meal_screen.dart';
 
+
+// Controller for CRUD operations
 class CategoryController extends GetxController {
   @override
   void onInit() async {

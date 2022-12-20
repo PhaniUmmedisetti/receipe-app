@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 
+
+// Card for single category variety screen
 class MainScreenItemCard extends StatelessWidget {
   final String image;
   final String title;
@@ -22,10 +24,10 @@ class MainScreenItemCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 16.0, right: 8, left: 8),
       child: Container(
-        width: 420,
-        height: 75,
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height * 0.1,
         decoration: BoxDecoration(
-          color: Colors.black12,
+          color: const Color.fromARGB(31, 170, 163, 163),
           borderRadius: BorderRadius.circular(
             10,
           ),
@@ -44,19 +46,20 @@ class MainScreenItemCard extends StatelessWidget {
               child: Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 12,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
             leading: CircleAvatar(
+              backgroundColor: Colors.white,
               backgroundImage: NetworkImage(image, scale: 1.0),
               radius: 30,
             ),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(favIcon),
+                // Icon(favIcon),
                 Icon(arrowIcon),
               ],
             ),
