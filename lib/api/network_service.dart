@@ -80,4 +80,26 @@ class NetworkService extends g.GetxController {
       return null;
     }
   }
+
+
+  Future<SingleMeal?> getSingleMealById({required String idMeal}) async {
+    print(" id meal here : $idMeal");
+    try {
+      final res = await dio.get(
+        'https://themealdb.com/api/json/v1/1/lookup.php?i=$idMeal',
+      );
+      print(res);
+      print(res.statusCode);
+      if (res.statusCode == 200) {
+        return SingleMeal.fromJson(res.data['meals'][0]);
+      }
+      return null;
+    } catch (err) {
+      if (err is DioError) {
+        if (err.response?.data is String) return err.response?.data;
+      }
+      return null;
+    }
+  }
+
 }

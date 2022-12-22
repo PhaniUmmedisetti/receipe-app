@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:meals/views/favourite_meal_screen.dart.dart';
 
 import '../controllers/category_controller.dart';
 import '../widgets/main_item_card.dart';
@@ -32,7 +33,9 @@ class MealScreen extends StatelessWidget {
                     Icons.favorite_border_outlined,
                     color: Colors.black,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to( TestPage());
+                  },
                 ),
               ],
             ),

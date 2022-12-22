@@ -14,4 +14,7 @@ class ApiEndPoints {
   
 }
 
+const String mealDbName = "MealBox";
+
+
 //'https://themealdb.com/api/json/v1/1/categories.php'

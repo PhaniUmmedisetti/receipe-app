@@ -8,7 +8,7 @@ import '../controllers/category_controller.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
-  final categoryController = Get.put(CategoryController());
+  final categoryController = Get.put(CategoryController()); 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<CategoryController>(
