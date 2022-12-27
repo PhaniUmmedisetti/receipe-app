@@ -86,6 +86,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "flutter_web_plugins",
+      "rootUri": "file:///C:/Users/Nspira/development/sdks/flutter/packages/flutter_web_plugins",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "get",
       "rootUri": "file:///C:/Users/Nspira/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/get-4.6.5",
       "packageUri": "lib/",
@@ -108,6 +114,12 @@
       "rootUri": "file:///C:/Users/Nspira/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/http_parser-4.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "js",
+      "rootUri": "file:///C:/Users/Nspira/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/js-0.6.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
     },
     {
       "name": "lints",
@@ -200,6 +212,12 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "shimmer",
+      "rootUri": "file:///C:/Users/Nspira/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/shimmer-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///C:/Users/Nspira/development/sdks/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -248,6 +266,54 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "url_launcher",
+      "rootUri": "file:///C:/Users/Nspira/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/url_launcher-6.1.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "url_launcher_android",
+      "rootUri": "file:///C:/Users/Nspira/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/url_launcher_android-6.0.22",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "url_launcher_ios",
+      "rootUri": "file:///C:/Users/Nspira/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/url_launcher_ios-6.0.17",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "url_launcher_linux",
+      "rootUri": "file:///C:/Users/Nspira/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/url_launcher_linux-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "url_launcher_macos",
+      "rootUri": "file:///C:/Users/Nspira/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/url_launcher_macos-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "url_launcher_platform_interface",
+      "rootUri": "file:///C:/Users/Nspira/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/url_launcher_platform_interface-2.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "url_launcher_web",
+      "rootUri": "file:///C:/Users/Nspira/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/url_launcher_web-2.0.13",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "url_launcher_windows",
+      "rootUri": "file:///C:/Users/Nspira/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/url_launcher_windows-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "vector_math",
       "rootUri": "file:///C:/Users/Nspira/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/vector_math-2.1.2",
       "packageUri": "lib/",
@@ -272,7 +338,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-12-20T10:52:58.532526Z",
+  "generated": "2022-12-23T06:08:07.589327Z",
   "generator": "pub",
   "generatorVersion": "2.18.6"
 }

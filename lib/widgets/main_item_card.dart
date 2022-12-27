@@ -7,7 +7,7 @@ class MainScreenItemCard extends StatelessWidget {
   final String image;
   final String title;
   final IconData arrowIcon;
-  final IconData favIcon;
+  final IconData? favIcon;
   final Function onTap;
 
   const MainScreenItemCard({

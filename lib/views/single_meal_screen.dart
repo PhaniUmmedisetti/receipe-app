@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-import '../controllers/category_controller.dart';
+import '../controllers/app_controller.dart';
 import '../widgets/body_loader.dart';
 
 // Screen for details of each meal id
@@ -9,7 +10,7 @@ import '../widgets/body_loader.dart';
 class SingleMealScreen extends StatelessWidget {
   SingleMealScreen({super.key});
 
-  final controller = Get.put(CategoryController());
+  final controller = Get.put(AppController());
   // late String ingredients;
   // late String measurment;
 
@@ -52,7 +53,7 @@ class SingleMealScreen extends StatelessWidget {
     var mealId = Get.arguments["idMeal"];
     print(mealId);
 
-    return GetBuilder<CategoryController>(initState: (_) async {
+    return GetBuilder<AppController>(initState: (_) async {
       await controller.getCategoryByid(mealId);
       await controller.getIsMealFavorite(mealId);
     }, builder: (context) {
@@ -332,6 +333,27 @@ class SingleMealScreen extends StatelessWidget {
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: InkWell(
+                          onTap: () => launchUrl(Uri.parse(
+                              controller.singleRes!.strYoutube.toString())),
+                          child: const Center(
+                            child: Text(
+                              '--------------Source Link--------------',
+                              // maxLines: 8,
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blue,
+                              ),
+                            ),
                           ),
                         ),
                       ),

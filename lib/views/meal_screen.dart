@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:meals/views/favourite_meal_screen.dart.dart';
-
-import '../controllers/category_controller.dart';
+import 'package:meals/constants.dart';
+import '../controllers/app_controller.dart';
 import '../widgets/main_item_card.dart';
 
 // Single meal category screen
 class MealScreen extends StatelessWidget {
   MealScreen({super.key});
-  final categoryController = Get.put(CategoryController());
+  final controller = Get.put(AppController());
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<CategoryController>(builder: (controller) {
+    return GetBuilder<AppController>(builder: (controller) {
       return SafeArea(
         child: Scaffold(
             appBar: AppBar(
@@ -29,12 +28,19 @@ class MealScreen extends StatelessWidget {
               ),
               actions: <Widget>[
                 IconButton(
-                  icon: const Icon(
-                    Icons.favorite_border_outlined,
-                    color: Colors.black,
-                  ),
+                  icon: controller.isSelected
+                      ? const Icon(
+                          Icons.close,
+                          color: Colors.black,
+                          size: 40,
+                        )
+                      : const Icon(
+                          Icons.search,
+                          color: Colors.black,
+                          size: 40,
+                        ),
                   onPressed: () {
-                    Get.to( TestPage());
+                    controller.toggle();
                   },
                 ),
               ],
@@ -49,18 +55,66 @@ class MealScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    ...categoryController.listOfMeals.map(
-                      (e) => MainScreenItemCard(
-                        arrowIcon: Icons.arrow_right,
-                        image: e.strMealThumb,
-                        title: e.strMeal,
-                        onTap: () {
-                          categoryController.goToSingleScreen(e.idMeal);
-                        },
-                        favIcon: Icons.favorite_border_outlined,
-                        // favIcon: Icons.favorite,
+                    if (controller.isSelected)
+                      Padding(
+                        padding: const EdgeInsets.only(left: 16, right: 16),
+                        child: Container(
+                          width: double.infinity,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: Colors.black12,
+                            borderRadius: BorderRadius.circular(88),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Center(
+                              child: TextField(
+                                controller: controller.textEditingController,
+                                focusNode: controller.textFocusNode,
+                                cursorColor: Colors.black,
+                                textAlign: TextAlign.center,
+                                decoration: const InputDecoration(
+                                  // prefix: Icon(Icons.search),
+
+                                  hintText: "Search here...",
+                                  border: InputBorder.none,
+                                ),
+                                onChanged: controller.searchSingleMealByName,
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+                    // controller.textEditingController.text.isNotEmpty
+                    //               ? controller.listOfSearchedCategories.length
+                    //               : controller.listOfCategories.length
+
+                    if (controller.textEditingController.text.isNotEmpty)
+                      ...controller.listOfSearchedSingleMeals.mapIndexed(
+                        (e, index) => MainScreenItemCard(
+                          arrowIcon: Icons.arrow_right,
+                          image: e.strMealThumb,
+                          title: e.strMeal,
+                          onTap: () {
+                            controller.goToSingleScreen(e.idMeal);
+                          },
+                          favIcon: Icons.favorite_border_outlined,
+                          // favIcon: Icons.favorite,
+                        ),
+                      ),
+                    if (controller.textEditingController.text.isEmpty)
+                      ...controller.listOfMeals.mapIndexed(
+                        (e, index) => MainScreenItemCard(
+                          arrowIcon: Icons.arrow_right,
+                          image: e.strMealThumb,
+                          title: e.strMeal,
+                          onTap: () {
+                            controller.goToSingleScreen(e.idMeal);
+                          },
+                          favIcon: Icons.favorite_border_outlined,
+                          // favIcon: Icons.favorite,
+                        ),
+                      ),
                   ],
                 ),
               ),

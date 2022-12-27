@@ -5,19 +5,19 @@ import 'package:meals/models/single_meal.dart';
 import 'package:meals/services/db_service.dart';
 import 'package:meals/widgets/body_loader.dart';
 
-import '../controllers/category_controller.dart';
+import '../controllers/app_controller.dart';
 import '../widgets/main_item_card.dart';
-import 'SIngle_meal_screen.dart';
+import 'Single_meal_screen.dart';
 
-class TestPage extends StatefulWidget {
-  TestPage({super.key});
-  final categoryController = Get.put(CategoryController());
+class FavouriteMealScreen extends StatefulWidget {
+  FavouriteMealScreen({super.key});
+  final categoryController = Get.put(AppController());
   @override
   @override
-  State<TestPage> createState() => _TestPageState();
+  State<FavouriteMealScreen> createState() => _FavouriteMealScreenState();
 }
 
-class _TestPageState extends State<TestPage> {
+class _FavouriteMealScreenState extends State<FavouriteMealScreen> {
   List<String> allDbData = [];
   var d = DatabaseService();
 
@@ -53,7 +53,13 @@ class _TestPageState extends State<TestPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Test page'),
+        iconTheme: const IconThemeData(color: Colors.black),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: const Text(
+          'Favourite Meals',
+          style: TextStyle(color: Colors.black),
+        ),
       ),
       backgroundColor: Colors.white,
       body: isLoading
