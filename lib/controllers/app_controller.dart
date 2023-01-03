@@ -57,11 +57,12 @@ class AppController extends GetxController {
 
 // To get categories by their name
   Future getCategoryByName(String strCategory) async {
+    Get.to(() => MealScreen());
     // isDataLoading = true;
-    //   update();
+    isDataLoading = true;
+    update();
 
     final res = await api.categoryGetByName(strCategory: strCategory);
-
     if (res.data == null) {
       await Get.dialog(const Dialog(
         child: Text(''),
@@ -74,8 +75,8 @@ class AppController extends GetxController {
     }
     // isDataLoading = false;
 
-    Get.to(() => MealScreen());
-    // update();
+    isDataLoading = false;
+    update();
   }
 
   // To get a category by its id

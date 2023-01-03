@@ -6,7 +6,7 @@ import 'package:meals/services/db_service.dart';
 import 'package:meals/widgets/body_loader.dart';
 
 import '../controllers/app_controller.dart';
-import '../widgets/main_item_card.dart';
+import '../widgets/main_screen_card.dart';
 import 'Single_meal_screen.dart';
 
 class FavouriteMealScreen extends StatefulWidget {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:meals/widgets/body_loader.dart';
-
+import 'package:shimmer/shimmer.dart';
 import '../controllers/app_controller.dart';
 import 'favourite_meal_screen.dart.dart';
 
@@ -17,68 +16,77 @@ class HomeScreen extends StatelessWidget {
       builder: (context) {
         return SafeArea(
           child: Scaffold(
-            appBar: AppBar(
-              actions: <Widget>[
-                IconButton(
-                  icon: const Icon(
-                    Icons.favorite_border_outlined,
-                    color: Colors.black,
-                    size: 40,
-                  ),
-                  onPressed: () {
-                    Get.to(FavouriteMealScreen());
-                  },
-                ),
-                IconButton(
-                  icon: controller.isSelected
-                      ? const Icon(
-                          Icons.close,
-                          color: Colors.black,
-                          size: 40,
-                        )
-                      : const Icon(
-                          Icons.search,
+            appBar: controller.isMainScreenLoading
+                ? null
+                : AppBar(
+                    actions: <Widget>[
+                      IconButton(
+                        icon: const Icon(
+                          Icons.favorite_border_outlined,
                           color: Colors.black,
                           size: 40,
                         ),
-                  onPressed: () {
-                    controller.toggle();
-                  },
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: CircleAvatar(
-                    radius: 20,
-                    backgroundColor: Colors.black,
-                    child: IconButton(
-                      // alignment: Alignment.bottomCenter,
-                      icon: const Icon(
-                        Icons.person,
-                        color: Colors.white,
-                        // size: 35,
+                        onPressed: () {
+                          Get.to(FavouriteMealScreen());
+                        },
                       ),
-                      onPressed: () {},
+                      IconButton(
+                        icon: controller.isSelected
+                            ? const Icon(
+                                Icons.close,
+                                color: Colors.black,
+                                size: 40,
+                              )
+                            : const Icon(
+                                Icons.search,
+                                color: Colors.black,
+                                size: 40,
+                              ),
+                        onPressed: () {
+                          controller.toggle();
+                        },
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: CircleAvatar(
+                          radius: 20,
+                          backgroundColor: Colors.black,
+                          child: IconButton(
+                            // alignment: Alignment.bottomCenter,
+                            icon: const Icon(
+                              Icons.person,
+                              color: Colors.white,
+                              // size: 35,
+                            ),
+                            onPressed: () {},
+                          ),
+                        ),
+                      ),
+                    ],
+                    backgroundColor: Colors.transparent,
+                    elevation: 0,
+                    title: const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        'Hello, Phani',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 26,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
+                    // centerTitle: true,
                   ),
-                ),
-              ],
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              title: const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  'Hello, Phani',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              // centerTitle: true,
-            ),
             body: controller.isMainScreenLoading
-                ? const BodyLoader()
+                ? const Padding(
+                    padding: EdgeInsets.only(
+                      top: 11.0,
+                      left: 11.0,
+                      right: 11.0,
+                    ),
+                    child: HomeShimmer(),
+                  )
                 : Padding(
                     padding: const EdgeInsets.only(
                       top: 11.0,
@@ -153,7 +161,6 @@ class HomeScreen extends StatelessWidget {
                               const SliverGridDelegateWithMaxCrossAxisExtent(
                             maxCrossAxisExtent: 160,
                           ),
-
                           delegate: SliverChildBuilderDelegate(
                             (context, index) {
                               return GestureDetector(
@@ -200,56 +207,106 @@ class HomeScreen extends StatelessWidget {
                                     ? controller.listOfSearchedCategories.length
                                     : controller.listOfCategories.length,
                           ),
-                          // gridDelegate: gridDelegate,
                         ),
-                        // GridView.builder(
-                        //     gridDelegate:
-                        //         const SliverGridDelegateWithMaxCrossAxisExtent(
-                        //       maxCrossAxisExtent: 160,
-                        //       // childAspectRatio: 3 / 2,
-                        //       crossAxisSpacing: 10,
-                        //       mainAxisSpacing: 20,
-                        //     ),
-                        //     itemCount: controller
-                        //             .textEditingController.text.isNotEmpty
-                        //         ? controller.listOfSearchedCategories.length
-                        //         : controller.listOfCategories.length,
-                        //     itemBuilder: (BuildContext ctx, index) {
-                        //       return GestureDetector(
-                        //         onTap: () {
-                        //           controller.listOfMeals.clear();
-                        //           controller.getCategoryByName(controller
-                        //               .listOfCategories[index].strCategory);
-                        //         },
-                        //         // Homescreen grid of meals
-                        //         child: Column(children: [
-                        //           CircleAvatar(
-                        //             backgroundColor: Colors.transparent,
-                        //             radius: 50,
-                        //             backgroundImage: NetworkImage(
-                        //               controller.listOfCategories[index]
-                        //                   .strCategoryThumb,
-                        //             ),
-                        //           ),
-                        //           Expanded(
-                        //             child: Text(
-                        //               controller.listOfCategories[index]
-                        //                   .strCategory,
-                        //               style: const TextStyle(
-                        //                 fontSize: 18,
-                        //                 fontWeight: FontWeight.bold,
-                        //               ),
-                        //             ),
-                        //           )
-                        //         ]),
-                        //       );
-                        //     }),
                       ],
                     ),
                   ),
           ),
         );
       },
+    );
+  }
+}
+
+class HomeShimmer extends StatelessWidget {
+  const HomeShimmer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        actions: [
+          Shimmer.fromColors(
+            baseColor: const Color.fromARGB(255, 191, 188, 188),
+            highlightColor: Colors.grey.shade300,
+            child: const CircleAvatar(
+              radius: 20,
+            ),
+          ),
+          const SizedBox(width: 6),
+          Shimmer.fromColors(
+            baseColor: const Color.fromARGB(255, 191, 188, 188),
+            highlightColor: Colors.grey.shade300,
+            child: const CircleAvatar(
+              radius: 20,
+            ),
+          ),
+          const SizedBox(width: 6),
+          Shimmer.fromColors(
+            baseColor: const Color.fromARGB(255, 191, 188, 188),
+            highlightColor: Colors.grey.shade300,
+            child: const CircleAvatar(
+              radius: 20,
+            ),
+          ),
+          const SizedBox(width: 6),
+        ],
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+
+        title: Shimmer.fromColors(
+          baseColor: const Color.fromARGB(255, 191, 188, 188),
+          highlightColor: Colors.grey.shade300,
+          child: const Card(
+            child: SizedBox(
+              height: 34,
+              width: 150,
+            ),
+          ),
+        ),
+        // bottom: ,
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 16.0),
+            child: Shimmer.fromColors(
+              baseColor: const Color.fromARGB(255, 191, 188, 188),
+              highlightColor: Colors.grey.shade300,
+              child: const Card(
+                child: SizedBox(
+                  height: 34,
+                  width: 150,
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(right: 8.0, left: 8.0, top: 32.0),
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3, mainAxisSpacing: 26),
+                itemCount: 12,
+                itemBuilder: (BuildContext context, int index) {
+                  return Column(
+                    children: [
+                      Shimmer.fromColors(
+                        baseColor: const Color.fromARGB(255, 191, 188, 188),
+                        highlightColor: Colors.grey.shade300,
+                        child: const CircleAvatar(
+                          radius: 50,
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
