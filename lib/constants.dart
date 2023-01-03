@@ -2,8 +2,7 @@
 class ApiEndPoints {
   // Base urls of api
   static const baseUrl = "https://themealdb.com/api/json/v1/1";
-  static const baseUrlFilter =
-      "https://themealdb.com/api/json/v1/1/filter.php?c=";
+  static const baseUrlFilter = "https://themealdb.com/api/json/v1/1/filter.php?c=";
 
   // Endpoint for filter by category
 
@@ -12,6 +11,8 @@ class ApiEndPoints {
 }
 
 const String mealDbName = "MealBox";
+const String themeDbName = "ThemeBox";
+const String themeSaveKey = 'theme';
 
 //'https://themealdb.com/api/json/v1/1/categories.php'
 
