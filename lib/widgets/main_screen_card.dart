@@ -72,10 +72,3 @@ class MainScreenItemCard extends StatelessWidget {
 }
 
 
-// ListView(padding: const EdgeInsets.all(8), children: <Widget>[
-//       Card(
-//           child: ListTile(
-//               title: Text(title),
-//               leading: CircleAvatar(backgroundImage: NetworkImage(image)),
-//               trailing: Icon(arrowIcon))),
-//     ]);
