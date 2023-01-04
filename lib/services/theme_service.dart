@@ -58,8 +58,8 @@ class ThemeService extends GetxController {
   ThemeData get darkModeData => _darkTheme;
 
   final ThemeData _lightTheme = ThemeData(
-    primaryColor: const Color(0xFF302F4D),
-    primaryColorLight: const Color(0xFF302F4D),
+    primaryColor: Colors.white,
+    primaryColorLight: Colors.black,
     backgroundColor: Colors.white,
     highlightColor: const Color(0xFF98c1d9),
     // // ignore: deprecated_member_use
@@ -70,9 +70,9 @@ class ThemeService extends GetxController {
   );
 
   final ThemeData _darkTheme = ThemeData(
-    primaryColor: const Color(0xFF302F4D),
+    primaryColor: Colors.black,
     primaryColorLight: Colors.white,
-    backgroundColor: const Color(0xFF120D31),
+    backgroundColor: Colors.black,
     colorScheme: const ColorScheme.dark(
       secondary: Colors.white,
     ),

@@ -5,7 +5,7 @@ import 'package:shimmer/shimmer.dart';
 import '../controllers/app_controller.dart';
 import '../widgets/main_screen_card.dart';
 
-// Single meal category screen
+// Screen that shows meals list of single category
 class MealScreen extends StatelessWidget {
   MealScreen({super.key});
   final controller = Get.put(AppController());
@@ -55,7 +55,8 @@ class MealScreen extends StatelessWidget {
           body: controller.isDataLoading
               ? const MealTileShimmer()
               : Padding(
-                  padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
+                  padding:
+                      const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
@@ -73,7 +74,8 @@ class MealScreen extends StatelessWidget {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Center(
                                   child: TextField(
-                                    controller: controller.textEditingController,
+                                    controller:
+                                        controller.textEditingController,
                                     focusNode: controller.textFocusNode,
                                     cursorColor: Colors.black,
                                     textAlign: TextAlign.center,
@@ -83,7 +85,8 @@ class MealScreen extends StatelessWidget {
                                       hintText: "Search here...",
                                       border: InputBorder.none,
                                     ),
-                                    onChanged: controller.searchSingleMealByName,
+                                    onChanged:
+                                        controller.searchSingleMealByName,
                                   ),
                                 ),
                               ),

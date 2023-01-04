@@ -5,7 +5,7 @@ import 'package:shimmer/shimmer.dart';
 import '../controllers/app_controller.dart';
 import 'favourite_meal_screen.dart.dart';
 
-// Home screen showing all categories
+// Screen that shows the first page i.e shows all categories
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -16,14 +16,15 @@ class HomeScreen extends StatelessWidget {
     return GetBuilder<AppController>(
       builder: (controller) {
         return Scaffold(
+          // backgroundColor: Theme.of(context).backgroundColor,
           appBar: controller.isMainScreenLoading
               ? null
               : AppBar(
                   actions: <Widget>[
                     IconButton(
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.favorite_border_outlined,
-                        color: Colors.black,
+                        color: Theme.of(context).primaryColorLight,
                         size: 40,
                       ),
                       onPressed: () {
@@ -32,14 +33,14 @@ class HomeScreen extends StatelessWidget {
                     ),
                     IconButton(
                       icon: controller.isSelected
-                          ? const Icon(
+                          ? Icon(
                               Icons.close,
-                              color: Colors.black,
+                              color: Theme.of(context).primaryColorLight,
                               size: 40,
                             )
-                          : const Icon(
+                          : Icon(
                               Icons.search,
-                              color: Colors.black,
+                              color: Theme.of(context).primaryColorLight,
                               size: 40,
                             ),
                       onPressed: () {
@@ -50,16 +51,16 @@ class HomeScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: CircleAvatar(
                         radius: 20,
-                        backgroundColor: Colors.black,
+                        backgroundColor: Theme.of(context).primaryColorLight,
                         child: IconButton(
                           // alignment: Alignment.bottomCenter,
-                          icon: const Icon(
+                          icon: Icon(
                             Icons.person,
-                            color: Colors.white,
+                            color: Theme.of(context).primaryColor,
                             // size: 35,
                           ),
                           onPressed: () {
-                            Get.to(ProfileScreen());
+                            Get.to(const ProfileScreen());
                           },
                         ),
                       ),
@@ -119,7 +120,8 @@ class HomeScreen extends StatelessWidget {
                                         padding: const EdgeInsets.all(8.0),
                                         child: Center(
                                           child: TextField(
-                                            controller: controller.textEditingController,
+                                            controller: controller
+                                                .textEditingController,
                                             focusNode: controller.textFocusNode,
                                             cursorColor: Colors.black,
                                             decoration: const InputDecoration(
@@ -127,17 +129,20 @@ class HomeScreen extends StatelessWidget {
                                               hintText: "Search here...",
                                               border: InputBorder.none,
                                             ),
-                                            onChanged: controller.searchMealByCategory,
+                                            onChanged:
+                                                controller.searchMealByCategory,
                                           ),
                                         ),
                                       ),
                                     ),
                                   )
                                 : Row(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: const [
                                       Padding(
-                                        padding: EdgeInsets.only(left: 16.0, bottom: 16),
+                                        padding: EdgeInsets.only(
+                                            left: 16.0, bottom: 16),
                                         child: Text(
                                           'List of categories :-',
                                           style: TextStyle(
@@ -154,7 +159,8 @@ class HomeScreen extends StatelessWidget {
                       ),
                       // Text('hellooooooooooooo'),
                       SliverGrid(
-                        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                        gridDelegate:
+                            const SliverGridDelegateWithMaxCrossAxisExtent(
                           maxCrossAxisExtent: 160,
                         ),
                         delegate: SliverChildBuilderDelegate(
@@ -162,8 +168,8 @@ class HomeScreen extends StatelessWidget {
                             return GestureDetector(
                               onTap: () {
                                 controller.listOfMeals.clear();
-                                controller.getCategoryByName(
-                                    controller.listOfCategories[index].strCategory);
+                                controller.getCategoryByName(controller
+                                    .listOfCategories[index].strCategory);
                               },
                               // Homescreen grid of meals
                               child: Column(children: [
@@ -171,17 +177,24 @@ class HomeScreen extends StatelessWidget {
                                   backgroundColor: Colors.transparent,
                                   radius: 50,
                                   backgroundImage: NetworkImage(
-                                    controller.textEditingController.text.isNotEmpty
+                                    controller.textEditingController.text
+                                            .isNotEmpty
                                         ? controller
-                                            .listOfSearchedCategories[index].strCategoryThumb
-                                        : controller.listOfCategories[index].strCategoryThumb,
+                                            .listOfSearchedCategories[index]
+                                            .strCategoryThumb
+                                        : controller.listOfCategories[index]
+                                            .strCategoryThumb,
                                   ),
                                 ),
                                 Expanded(
                                   child: Text(
-                                    controller.textEditingController.text.isNotEmpty
-                                        ? controller.listOfSearchedCategories[index].strCategory
-                                        : controller.listOfCategories[index].strCategory,
+                                    controller.textEditingController.text
+                                            .isNotEmpty
+                                        ? controller
+                                            .listOfSearchedCategories[index]
+                                            .strCategory
+                                        : controller.listOfCategories[index]
+                                            .strCategory,
                                     style: const TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
@@ -191,9 +204,10 @@ class HomeScreen extends StatelessWidget {
                               ]),
                             );
                           },
-                          childCount: controller.textEditingController.text.isNotEmpty
-                              ? controller.listOfSearchedCategories.length
-                              : controller.listOfCategories.length,
+                          childCount:
+                              controller.textEditingController.text.isNotEmpty
+                                  ? controller.listOfSearchedCategories.length
+                                  : controller.listOfCategories.length,
                         ),
                       ),
                     ],

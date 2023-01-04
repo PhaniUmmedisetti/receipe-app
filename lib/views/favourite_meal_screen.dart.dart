@@ -9,6 +9,7 @@ import '../controllers/app_controller.dart';
 import '../widgets/main_screen_card.dart';
 import 'Single_meal_screen.dart';
 
+// Screen that shows all the meals that are added to favourites list
 class FavouriteMealScreen extends StatefulWidget {
   FavouriteMealScreen({super.key});
   final categoryController = Get.put(AppController());
