@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../controllers/app_controller.dart';
 import '../widgets/body_loader.dart';
 
@@ -38,16 +37,6 @@ class SingleMealScreen extends StatelessWidget {
           );
   }
 
-//  late String ingredients;
-//   late String measurment;
-//   Widget ingredientsMeasure(){
-//     return Row(
-//       children: [
-//         //add font size 15
-//         Text(ingredients),
-//         Text(measurment),
-//       ],
-//     );
   @override
   Widget build(BuildContext context) {
     var mealId = Get.arguments["idMeal"];
@@ -56,25 +45,27 @@ class SingleMealScreen extends StatelessWidget {
     return GetBuilder<AppController>(initState: (_) async {
       await controller.getCategoryByid(mealId);
       await controller.getIsMealFavorite(mealId);
-    }, builder: (context) {
+    }, builder: (controller) {
       return Scaffold(
         appBar: AppBar(
-          iconTheme: const IconThemeData(color: Colors.black),
+          iconTheme: IconThemeData(
+            color: Theme.of(context).primaryColorLight,
+          ),
           backgroundColor: Colors.transparent,
           elevation: 0,
           actions: <Widget>[
             IconButton(
-              icon: const Icon(
+              icon: Icon(
                 Icons.share,
                 size: 24,
-                color: Colors.black,
+                color: Theme.of(context).primaryColorLight,
               ),
               onPressed: () {},
             ),
             IconButton(
-              icon: const Icon(
+              icon: Icon(
                 Icons.download,
-                color: Colors.black,
+                color: Theme.of(context).primaryColorLight,
                 size: 24,
               ),
               onPressed: () {},
@@ -85,7 +76,9 @@ class SingleMealScreen extends StatelessWidget {
                   controller.isFavorite
                       ? Icons.favorite
                       : Icons.favorite_border_outlined,
-                  color: controller.isFavorite ? Colors.red : Colors.black,
+                  color: controller.isFavorite
+                      ? Colors.red
+                      : Theme.of(context).primaryColorLight,
                   size: 24,
                 ),
                 onPressed: () {
@@ -95,8 +88,8 @@ class SingleMealScreen extends StatelessWidget {
           ],
           title: Text(
             controller.singleRes?.strMeal.toString() ?? "",
-            style: const TextStyle(
-              color: Colors.black,
+            style: TextStyle(
+              color: Theme.of(context).primaryColorLight,
               fontWeight: FontWeight.bold,
               fontSize: 18,
             ),
@@ -115,16 +108,6 @@ class SingleMealScreen extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      // ClipRRect(
-                      //   borderRadius: BorderRadius.circular(80),
-                      //   child: Image(
-                      //     image: NetworkImage(
-                      //         controller.singleRes!.strMealThumb.toString()),
-                      //     height: 400,
-                      //     width: 600,
-                      //     fit: BoxFit.contain,
-                      //   ),
-                      // ),
                       Container(
                           width: 400.00,
                           height: 400.00,
@@ -142,46 +125,12 @@ class SingleMealScreen extends StatelessWidget {
                       if (controller.singleRes != null)
                         Text(
                           controller.singleRes!.strMeal.toString(),
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                            color: Theme.of(context).primaryColorLight,
                           ),
                         ),
-                      // const SizedBox(height: 14),
-                      // Row(
-                      //   children: [
-                      //     const Align(
-                      //       alignment: Alignment.centerLeft,
-                      //       child: Text(
-                      //         'Name :-',
-                      //         style: TextStyle(
-                      //             fontSize: 16,
-                      //             fontWeight: FontWeight.bold,
-                      //             overflow: TextOverflow.ellipsis),
-                      //       ),
-                      //     ),
-                      //     const SizedBox(width: 5),
-                      //     Align(
-                      //       alignment: Alignment.centerLeft,
-                      //       child: Expanded(
-                      //         child: Text(
-                      //           controller.singleRes!.strMeal.toString(),
-                      //           maxLines: 8,
-                      //           textAlign: TextAlign.left,
-                      //           style: const TextStyle(
-                      //             fontSize: 12,
-                      //             fontWeight: FontWeight.bold,
-                      //             color: Colors.black,
-                      //             overflow: TextOverflow.visible,
-                      //           ),
-                      //         ),
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
-
-                      // // Ink(),
 
                       const SizedBox(height: 8),
                       //
@@ -206,10 +155,10 @@ class SingleMealScreen extends StatelessWidget {
                               controller.singleRes!.strCategory.toString(),
                               maxLines: 8,
                               textAlign: TextAlign.left,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black,
+                                color: Theme.of(context).primaryColorLight,
                               ),
                             ),
                           ),
@@ -239,10 +188,10 @@ class SingleMealScreen extends StatelessWidget {
                               controller.singleRes!.strArea.toString(),
                               maxLines: 8,
                               textAlign: TextAlign.left,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black,
+                                color: Theme.of(context).primaryColorLight,
                               ),
                             ),
                           ),
@@ -329,10 +278,10 @@ class SingleMealScreen extends StatelessWidget {
                           controller.singleRes!.strInstructions.toString(),
                           // maxLines: 8,
                           textAlign: TextAlign.left,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                            color: Theme.of(context).primaryColorLight,
                           ),
                         ),
                       ),
@@ -366,22 +315,3 @@ class SingleMealScreen extends StatelessWidget {
     });
   }
 }
-
-// Row(
-//   mainAxisAlignment: MainAxisAlignment.spaceAround,
-//   children: [
-//     Container(
-//       alignment: Alignment.center,
-//       width: 200.00,
-//       height: 50.00,
-//       decoration: BoxDecoration(
-//         color: Colors.orange,
-//         borderRadius: BorderRadius.circular(25),
-//       ),
-//       child: const Text(
-//         'Add to cart',
-//         style: TextStyle(color: Colors.white, fontSize: 24),
-//       ),
-//     ),
-//   ],
-// ),

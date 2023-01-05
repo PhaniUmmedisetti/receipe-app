@@ -157,16 +157,4 @@ class AppController extends GetxController {
     update();
   }
 
-// // To add meal to favourites list
-//   void favouriteReceipe(Meal meal) {
-//     if (favouriteRecipes.contains(meal)) {
-//       //remove meal from favourite meals list
-//       favouriteRecipes.remove(meal);
-//       update();
-//     } else {
-//       //add meal to favourite meal list
-//       favouriteRecipes.add(meal);
-//       update();
-//     }
-//   }
 }

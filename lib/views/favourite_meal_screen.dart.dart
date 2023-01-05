@@ -9,6 +9,7 @@ import '../controllers/app_controller.dart';
 import '../widgets/main_screen_card.dart';
 import 'Single_meal_screen.dart';
 
+// Screen that shows all the meals that are added to favourites list
 class FavouriteMealScreen extends StatefulWidget {
   FavouriteMealScreen({super.key});
   final categoryController = Get.put(AppController());
@@ -116,79 +117,9 @@ class _FavouriteMealScreenState extends State<FavouriteMealScreen> {
                           child: const LinearProgressIndicator(),
                         );
                       }))
-                  //   ListView.builder(
-                  //     itemCount: allDbData.length,
-                  //     itemBuilder: (context, index) {
-                  //       return Card(
-                  //         child: Text(
-                  //           allDbData[index].toString(),
-                  //           style: const TextStyle(color: Colors.black),
-                  //         ),
-                  //       );
-                  //     },
-                  //   ),
                 ],
               ),
             ),
     );
   }
 }
-
-
-
-
-
-
-// DefaultTextStyle(
-//         style: Theme.of(context).textTheme.displayMedium!,
-//         textAlign: TextAlign.center,
-//         child: FutureBuilder<String>(
-//           future: _calculation, // a previously-obtained Future<String> or null
-//           builder: (context, mealDbName) {
-//             List<Widget> children;
-//             if (mealDbName.hasData) {
-//               children = <Widget>[
-//                 const Icon(
-//                   Icons.check_circle_outline,
-//                   color: Colors.green,
-//                   size: 60,
-//                 ),
-//                 Padding(
-//                   padding: const EdgeInsets.only(top: 16),
-//                   child: Text('Result: ${mealDbName.data}'),
-//                 ),
-//               ];
-//             } else if (mealDbName.hasError) {
-//               children = <Widget>[
-//                 const Icon(
-//                   Icons.error_outline,
-//                   color: Colors.red,
-//                   size: 60,
-//                 ),
-//                 Padding(
-//                   padding: const EdgeInsets.only(top: 16),
-//                   child: Text('Error: ${mealDbName.error}'),
-//                 ),
-//               ];
-//             } else {
-//               children = const <Widget>[
-//                 SizedBox(
-//                   width: 60,
-//                   height: 60,
-//                   child: CircularProgressIndicator(),
-//                 ),
-//                 Padding(
-//                   padding: EdgeInsets.only(top: 16),
-//                   child: Text('Awaiting result...'),
-//                 ),
-//               ];
-//             }
-//             return Center(
-//               child: Column(
-//                 mainAxisAlignment: MainAxisAlignment.center,
-//                 children: children,
-//               ),
-//             );
-//           },
-//         ),
-//       ),
