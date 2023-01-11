@@ -14,7 +14,7 @@ class SingleMealScreen extends StatelessWidget {
   // late String measurment;
 
   Widget ingredientsMeasure(String? ingredients, String? measurment) {
-    print(" ing : $ingredients mea : $measurment");
+    // print(" ing : $ingredients mea : $measurment");
     return (ingredients == null ||
             ingredients == "" ||
             measurment == null ||

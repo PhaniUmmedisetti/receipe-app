@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:meals/views/profile_screen.dart';
 import 'package:shimmer/shimmer.dart';
 import '../controllers/app_controller.dart';
 import 'favourite_meal_screen.dart.dart';
+import 'profile_screen.dart';
 
 // Screen that shows the first page i.e shows all categories
 
@@ -136,6 +136,26 @@ class HomeScreen extends StatelessWidget {
                                       ),
                                     ),
                                   )
+                                : Container(),
+                            // if (controller.textEditingController.text.isEmpty !=
+                            //     controller.listOfSearchedCategories.isEmpty)
+                            //   // const Text('No meal found')
+                            //   const Padding(
+                            //     padding: EdgeInsets.all(8.0),
+                            //     child: Text(
+                            //       'No meal found',
+                            //       style: TextStyle(fontSize: 20),
+                            //     ),
+                            //   )
+                            (controller.textEditingController.text.isNotEmpty &&
+                                    controller.listOfSearchedCategories.isEmpty)
+                                ? const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              'No category found',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          )
                                 : Row(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
@@ -157,7 +177,8 @@ class HomeScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      // Text('hellooooooooooooo'),
+                      // if (controller.textEditingController.text.isEmpty !=
+                      //     controller.listOfSearchedCategories.isEmpty)
                       SliverGrid(
                         gridDelegate:
                             const SliverGridDelegateWithMaxCrossAxisExtent(

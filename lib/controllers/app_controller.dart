@@ -131,8 +131,9 @@ class AppController extends GetxController {
         .where((element) =>
             element.strCategory.toLowerCase().contains(value.toLowerCase()))
         .toList();
-    if (textEditingController.text.isEmpty &&
+    if (textEditingController.text.isNotEmpty &&
         listOfSearchedCategories.isEmpty) {
+      const Text('no data found');
       print("No Category Found!");
     }
     update();
@@ -146,6 +147,7 @@ class AppController extends GetxController {
         .toList();
     if (textEditingController.text.isEmpty &&
         listOfSearchedCategories.isEmpty) {
+      const Text('no data');
       print("No meal Found!");
     }
     update();
@@ -156,5 +158,4 @@ class AppController extends GetxController {
     isSelected = !isSelected;
     update();
   }
-
 }

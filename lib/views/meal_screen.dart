@@ -92,6 +92,16 @@ class MealScreen extends StatelessWidget {
                               ),
                             ),
                           ),
+                        // ignore: unrelated_type_equality_checks
+                        // if (controller.textEditingController.text !=
+                        //     controller.listOfSearchedSingleMeals)
+                        //   const Padding(
+                        //     padding: EdgeInsets.all(8.0),
+                        //     child: Text(
+                        //       'No meal found',
+                        //       style: TextStyle(fontSize: 20),
+                        //     ),
+                        //   ),
                         if (controller.textEditingController.text.isNotEmpty)
                           ...controller.listOfSearchedSingleMeals.mapIndexed(
                             (e, index) => MainScreenItemCard(
@@ -105,6 +115,20 @@ class MealScreen extends StatelessWidget {
                               // favIcon: Icons.favorite,
                             ),
                           ),
+
+                        if (controller.textEditingController.text.isNotEmpty &&
+                            controller.listOfSearchedSingleMeals.isEmpty)
+                          // const Text('Put your no search results widget here.'),
+                          const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              'No meal found',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ),
+                        // if (controller.listOfSearchedSingleMeals.isNotEmpty)
+                        //   const Text('vanakkam'),
+
                         if (controller.textEditingController.text.isEmpty)
                           ...controller.listOfMeals.mapIndexed(
                             (e, index) => MainScreenItemCard(
@@ -118,6 +142,16 @@ class MealScreen extends StatelessWidget {
                               // favIcon: Icons.favorite,
                             ),
                           ),
+                        // if (controller.textEditingController.text != controller.listOfSearchedSingleMeals)
+                        //   const Padding(
+                        //     padding: EdgeInsets.all(8.0),
+                        //     child: Text(
+                        //       'No meal found',
+                        //       style: TextStyle(fontSize: 20),
+                        //     ),
+                        //   )
+                        // else if (controller.listOfMeals.length > 2)
+                        //   Container()
                       ],
                     ),
                   ),
