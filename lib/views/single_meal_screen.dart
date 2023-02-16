@@ -28,6 +28,9 @@ class SingleMealScreen extends StatelessWidget {
                     const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
               ),
               const SizedBox(width: 5),
+              // Divider(),
+              const Text(':-'),
+              const SizedBox(width: 5),
               Text(
                 measurment,
                 style:

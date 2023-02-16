@@ -19,7 +19,6 @@ class ProfileScreen extends StatelessWidget {
         title: Text(
           'Profile Screen',
           style: TextStyle(
-            // color: Colors.black,
             color: Theme.of(context).primaryColorLight,
             fontWeight: FontWeight.bold,
             fontSize: 20,
@@ -39,7 +38,6 @@ class ProfileScreen extends StatelessWidget {
                   child: Text(
                     "Theme",
                     style: TextStyle(
-                      // fontFamily: 'Segoe',
                       fontSize: 20.0,
                       color: Theme.of(context).colorScheme.secondary,
                       fontWeight: FontWeight.w500,

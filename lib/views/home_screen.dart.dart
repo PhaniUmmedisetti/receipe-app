@@ -16,7 +16,6 @@ class HomeScreen extends StatelessWidget {
     return GetBuilder<AppController>(
       builder: (controller) {
         return Scaffold(
-          // backgroundColor: Theme.of(context).backgroundColor,
           appBar: controller.isMainScreenLoading
               ? null
               : AppBar(
@@ -53,11 +52,9 @@ class HomeScreen extends StatelessWidget {
                         radius: 20,
                         backgroundColor: Theme.of(context).primaryColorLight,
                         child: IconButton(
-                          // alignment: Alignment.bottomCenter,
                           icon: Icon(
                             Icons.person,
                             color: Theme.of(context).primaryColor,
-                            // size: 35,
                           ),
                           onPressed: () {
                             Get.to(const ProfileScreen());
@@ -80,7 +77,6 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // centerTitle: true,
                 ),
           body: controller.isMainScreenLoading
               ? const Padding(
@@ -125,7 +121,6 @@ class HomeScreen extends StatelessWidget {
                                             focusNode: controller.textFocusNode,
                                             cursorColor: Colors.black,
                                             decoration: const InputDecoration(
-                                              // prefix: Icon(Icons.search),
                                               hintText: "Search here...",
                                               border: InputBorder.none,
                                             ),
@@ -137,16 +132,7 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                   )
                                 : Container(),
-                            // if (controller.textEditingController.text.isEmpty !=
-                            //     controller.listOfSearchedCategories.isEmpty)
-                            //   // const Text('No meal found')
-                            //   const Padding(
-                            //     padding: EdgeInsets.all(8.0),
-                            //     child: Text(
-                            //       'No meal found',
-                            //       style: TextStyle(fontSize: 20),
-                            //     ),
-                            //   )
+                           
                             (controller.textEditingController.text.isNotEmpty &&
                                     controller.listOfSearchedCategories.isEmpty)
                                 ? const Padding(
@@ -177,8 +163,7 @@ class HomeScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      // if (controller.textEditingController.text.isEmpty !=
-                      //     controller.listOfSearchedCategories.isEmpty)
+                      
                       SliverGrid(
                         gridDelegate:
                             const SliverGridDelegateWithMaxCrossAxisExtent(
@@ -192,7 +177,7 @@ class HomeScreen extends StatelessWidget {
                                 controller.getCategoryByName(controller
                                     .listOfCategories[index].strCategory);
                               },
-                              // Homescreen grid of meals
+                              // Homescreen grid of categories
                               child: Column(children: [
                                 CircleAvatar(
                                   backgroundColor: Colors.transparent,

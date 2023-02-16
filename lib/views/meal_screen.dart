@@ -25,7 +25,6 @@ class MealScreen extends StatelessWidget {
             title: Text(
               'Meal Screen',
               style: TextStyle(
-                // color: Colors.black,
                 color: Theme.of(context).primaryColorLight,
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
@@ -36,13 +35,11 @@ class MealScreen extends StatelessWidget {
                 icon: controller.isSelected
                     ? Icon(
                         Icons.close,
-                        // color: Colors.black,
                         color: Theme.of(context).primaryColorLight,
                         size: 40,
                       )
                     : Icon(
                         Icons.search,
-                        // color: Colors.black,
                         color: Theme.of(context).primaryColorLight,
                         size: 40,
                       ),
@@ -92,16 +89,7 @@ class MealScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                        // ignore: unrelated_type_equality_checks
-                        // if (controller.textEditingController.text !=
-                        //     controller.listOfSearchedSingleMeals)
-                        //   const Padding(
-                        //     padding: EdgeInsets.all(8.0),
-                        //     child: Text(
-                        //       'No meal found',
-                        //       style: TextStyle(fontSize: 20),
-                        //     ),
-                        //   ),
+                       
                         if (controller.textEditingController.text.isNotEmpty)
                           ...controller.listOfSearchedSingleMeals.mapIndexed(
                             (e, index) => MainScreenItemCard(
@@ -112,13 +100,11 @@ class MealScreen extends StatelessWidget {
                                 controller.goToSingleScreen(e.idMeal);
                               },
                               favIcon: Icons.favorite_border_outlined,
-                              // favIcon: Icons.favorite,
                             ),
                           ),
 
                         if (controller.textEditingController.text.isNotEmpty &&
                             controller.listOfSearchedSingleMeals.isEmpty)
-                          // const Text('Put your no search results widget here.'),
                           const Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text(
@@ -126,8 +112,7 @@ class MealScreen extends StatelessWidget {
                               style: TextStyle(fontSize: 20),
                             ),
                           ),
-                        // if (controller.listOfSearchedSingleMeals.isNotEmpty)
-                        //   const Text('vanakkam'),
+                        
 
                         if (controller.textEditingController.text.isEmpty)
                           ...controller.listOfMeals.mapIndexed(
@@ -139,19 +124,9 @@ class MealScreen extends StatelessWidget {
                                 controller.goToSingleScreen(e.idMeal);
                               },
                               favIcon: Icons.favorite_border_outlined,
-                              // favIcon: Icons.favorite,
                             ),
                           ),
-                        // if (controller.textEditingController.text != controller.listOfSearchedSingleMeals)
-                        //   const Padding(
-                        //     padding: EdgeInsets.all(8.0),
-                        //     child: Text(
-                        //       'No meal found',
-                        //       style: TextStyle(fontSize: 20),
-                        //     ),
-                        //   )
-                        // else if (controller.listOfMeals.length > 2)
-                        //   Container()
+                      
                       ],
                     ),
                   ),
@@ -161,7 +136,7 @@ class MealScreen extends StatelessWidget {
     );
   }
 }
-//MealTileShimmer
+//MealTileShimmer 
 
 class MealTileShimmer extends StatelessWidget {
   const MealTileShimmer({super.key});
@@ -174,7 +149,6 @@ class MealTileShimmer extends StatelessWidget {
         return Column(
           children: [
             SizedBox(
-              // width: 100,
               height: 110,
               child: Center(
                 child: Padding(
@@ -182,7 +156,6 @@ class MealTileShimmer extends StatelessWidget {
                   child: Card(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18),
-                      //set border radius more than 50% of height and width to make circle
                     ),
                     elevation: 0.15,
                     child: ListTile(
@@ -198,7 +171,6 @@ class MealTileShimmer extends StatelessWidget {
                         baseColor: const Color.fromARGB(255, 191, 188, 188),
                         highlightColor: Colors.grey.shade300,
                         child: Container(
-                          // width: double.infinity,
                           height: 12.0,
                           color: Colors.white,
                         ),
